@@ -11,6 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHost
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import me.andresgomez.facebook.ui.theme.FacebookTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,30 +22,19 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            FacebookTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+            val myNavController = rememberNavController()
+            NavHost(
+                navController = myNavController,
+                startDestination = "login",
+                modifier = Modifier.fillMaxSize()
+            ) {
+                composable(route = "login") {
+                    FacebookLoginScreen(myNavController)
+                }
+                composable(route = "register") {
+                    FacebookRegisterScreen(myNavController)
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    FacebookTheme {
-        Greeting("Android")
     }
 }

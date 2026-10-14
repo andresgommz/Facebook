@@ -19,11 +19,12 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
-@Preview
+// @Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FacebookRegisterScreen() {
+fun FacebookRegisterScreen(navController: NavController) {
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
     var emailOrPhone by remember { mutableStateOf("") }
@@ -38,7 +39,9 @@ fun FacebookRegisterScreen() {
             TopAppBar(
                 title = { },
                 navigationIcon = {
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = {
+                        navController.popBackStack()
+                    }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Ir atrás"
@@ -206,7 +209,7 @@ fun FacebookRegisterScreen() {
             Spacer(modifier = Modifier.height(16.dp))
 
             // Ir a Iniciar sesión
-            TextButton(onClick = {}) {
+            TextButton(onClick = {navController.navigate("login")}) {
                 Text(
                     text = "¿Ya tienes una cuenta?",
                     color = FacebookBlue
