@@ -54,6 +54,9 @@ dependencies {
 
     implementation("androidx.compose.material:material-icons-extended")
 
+    // Coil para cargar imágenes desde internet
+    implementation("io.coil-kt:coil-compose:2.7.0")
+
     val nav_version = "2.10.2"
 
     // Jetpack Compose integration

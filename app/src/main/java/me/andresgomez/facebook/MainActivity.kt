@@ -30,7 +30,9 @@ class MainActivity : ComponentActivity() {
                         myNavController.navigate("register")
                     },
                         onClickIniciarSesion = {
-                        myNavController.navigate("feed")
+                        myNavController.navigate("feed"){
+                            popUpTo("login")
+                        }
                     })
                 }
                 composable(route = "register") {
