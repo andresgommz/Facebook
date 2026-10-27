@@ -12,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import me.andresgomez.facebook.ui.screens.FacebookLoginScreen
 import me.andresgomez.facebook.ui.screens.FacebookRegisterScreen
 import me.andresgomez.facebook.ui.screens.FeedScreen
+import me.andresgomez.facebook.ui.screens.ForgotPassword
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,18 +28,27 @@ class MainActivity : ComponentActivity() {
                 composable(route = Routes.LOGIN) {
                     FacebookLoginScreen(
                         onClickRegister = {
-                        myNavController.navigate(Routes.REGISTER)
-                    },
-                        onClickIniciarSesion = {
-                        myNavController.navigate(Routes.FEED){
-                            popUpTo(Routes.LOGIN) {
-                                inclusive = true
+                            myNavController.navigate(Routes.REGISTER)
+                        },
+                        onClickLogin = {
+                            myNavController.navigate(Routes.FEED) {
+                                popUpTo(Routes.LOGIN) {
+                                    inclusive = true
+                                }
                             }
+                        },
+                        onClickForgotPassword = {
+                            myNavController.navigate(Routes.FORGOT_PASSWORD)
                         }
-                    })
+                    )
                 }
                 composable(route = Routes.REGISTER) {
                     FacebookRegisterScreen(onClickBack = {
+                        myNavController.popBackStack()
+                    })
+                }
+                composable(route = Routes.FORGOT_PASSWORD) {
+                    ForgotPassword(onBackClick = {
                         myNavController.popBackStack()
                     })
                 }

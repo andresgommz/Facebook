@@ -8,4 +8,5 @@ data class Post(
     val likes: Int,
     val comments: Int,
     val liked: Boolean = false,
+    val imageUrl: String? = null,
 )

@@ -17,9 +17,9 @@ private val FacebookTextGray = Color(0xFF606770)
 
 @Composable
 fun PostStats(
+    modifier: Modifier = Modifier,
     likes: Int = 24,
     comments: Int = 3,
-    modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier

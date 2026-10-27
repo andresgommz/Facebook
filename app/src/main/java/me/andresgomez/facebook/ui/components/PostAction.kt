@@ -8,18 +8,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
-fun PostAction() {
+fun PostAction(
+    modifier: Modifier = Modifier,
+    isLiked: Boolean = false,
+) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
+        modifier = modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween,
     ) {
-        LikeButton()
+        LikeButton(isLiked = isLiked)
         CommentButton()
         ShareButton()
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun PostActionPreview() {
     PostAction()
